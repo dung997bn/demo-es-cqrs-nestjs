@@ -1,5 +1,5 @@
 import { StorableEvent } from "event-sourcing-nestjs";
-import { ProductState } from "src/products/models/product.model";
+import { ProductDto } from "src/products/dtos/product-dto";
 
 export class ProductCreatedEvent extends StorableEvent {
     eventAggregate: 'product';
@@ -7,10 +7,7 @@ export class ProductCreatedEvent extends StorableEvent {
 
     constructor(
         public readonly id: string,
-        public readonly name: string,
-        public readonly description: string,
-        public readonly price: number,
-        public readonly state: ProductState,
+        public dto: ProductDto,
     ) {
         super();
     }

@@ -1,4 +1,6 @@
 import { AggregateRoot } from "@nestjs/cqrs";
+import { ProductDto } from "../dtos/product-dto";
+import { ProductCreatedEvent } from "../events/imp/product-created.event";
 
 export enum ProductState {
     InStock = 'inStock',
@@ -17,4 +19,8 @@ export class Product extends AggregateRoot {
     public description: string
     public price: number
     public state: ProductState
+
+    create(dto: ProductDto) {
+        this.apply(new ProductCreatedEvent(this.id, dto))
+    }
 }
