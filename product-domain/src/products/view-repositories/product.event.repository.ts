@@ -4,7 +4,7 @@ import { ProductCreatedEvent } from "../events/imp/product-created.event";
 
 import { ProductDocument } from "../schemas/product.schema";
 
-export class ProductEventRepository {
+export class ProductViewRepository {
     constructor(
         @InjectModel('Product') private readonly productModel: Model<ProductDocument>
     ) { }
@@ -15,13 +15,13 @@ export class ProductEventRepository {
             new: true,
             upsert: true
         })
-        // .then(async (response) => {
-        //     console.log(response);
-        //     if (response)
-        //         return response
-        //     else
-        //         return await this.productModel.create(newProduct)
-        // })
+            .then(async (response) => {
+                console.log(response);
+                if (response)
+                    return response
+                else
+                    return await this.productModel.create(newProduct)
+            })
 
         return result.id as string
     }

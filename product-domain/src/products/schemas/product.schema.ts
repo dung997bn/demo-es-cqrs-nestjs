@@ -1,4 +1,4 @@
-import { Prop, Schema } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 import { ProductState } from "../models/product.model";
 
@@ -21,3 +21,6 @@ export class Product {
     @Prop()
     public state: ProductState
 }
+
+
+export const ProductViewSchema = SchemaFactory.createForClass(Product);
