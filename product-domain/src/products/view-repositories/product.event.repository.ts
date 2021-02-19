@@ -10,7 +10,7 @@ export class ProductViewRepository {
     ) { }
 
     async insertEvent(event: ProductCreatedEvent): Promise<any> {
-        const newProduct = { ...event.dto }
+        const newProduct = { ...event }
         const result = await this.productModel.findOneAndUpdate({ _id: event.id }, newProduct, {
             new: true,
             upsert: true

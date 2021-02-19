@@ -20,7 +20,7 @@ export class Product extends AggregateRoot {
     public price: number
     public state: ProductState
 
-    create(dto: ProductDto) {
-        this.apply(new ProductCreatedEvent(this.id, dto))
+    create(name: string, description: string, price: number, state: ProductState) {
+        this.apply(new ProductCreatedEvent(this.id, name, description, price, state))
     }
 }

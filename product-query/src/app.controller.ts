@@ -13,7 +13,7 @@ export class AppController {
   }
 
   @EventPattern(PRODUCT_CREATE_PATTERN)
-  async handleProduct(@Payload() data: Record<string, unknown>) {
+  async handleProduct(@Payload() data: any) {
     console.log(data);
     return null
   }

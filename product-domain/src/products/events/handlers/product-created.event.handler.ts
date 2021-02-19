@@ -16,6 +16,6 @@ export class ProductCreatedEventHandler implements IEventHandler<ProductCreatedE
         // send to microservice
         const data = event;
         console.log('Client send mesage to broker');
-        this.publisher.publish(PRODUCT_CREATE_PATTERN, JSON.stringify(data));
+        this.publisher.publish(PRODUCT_CREATE_PATTERN, data);
     }
 }
