@@ -1,0 +1,1 @@
+export { ClassBased } from "./class-based";

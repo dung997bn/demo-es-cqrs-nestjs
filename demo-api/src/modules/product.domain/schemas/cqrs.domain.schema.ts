@@ -25,7 +25,6 @@ payloadSchema.pre("save", function (next) {
     next();
 });
 
-
 export const CqrsDomainSchema = new mongoose.Schema({
     _id: { type: String },
     id: { type: String, index: true },

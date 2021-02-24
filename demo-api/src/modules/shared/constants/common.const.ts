@@ -1,6 +1,7 @@
 export class CommonConst {
     static DOMAIN_CONNECTION_TOKEN = "Domain-DbConnectionToken";
     static QUERY_CONNECTION_TOKEN = "Query-DbConnectionToken";
+    
     static DOMAIN_MODEL_TOKEN = "Domain-ModelToken";
     static QUERY_MODEL_TOKEN = "Query-ModelToken";
 
@@ -8,5 +9,27 @@ export class CommonConst {
     static PRODUCT_QUERY_MODEL_TOKEN = "Product-Query-ModelToken";
 
 
-    static PRODUCT_EVENTS = "events-product";
+    static PRODUCT_EVENTS_DOMAIN = "events-product";
+    static PRODUCT_COLLECTION_QUERY = "products";
+    static PRODUCT_AGGREGATE_NAME = "product";
+
+
+    //Code Generate
+    static CODE_GENERATE_COLLECTION = "code-generates";
+
+    static AGGREGATES = {
+        PRODUCT: {
+            NAME: CommonConst.PRODUCT_AGGREGATE_NAME,
+            CREATED: CommonConst.PRODUCT_AGGREGATE_NAME + "Created",
+            UPDATED: CommonConst.PRODUCT_AGGREGATE_NAME + "Updated",
+            DELETED: CommonConst.PRODUCT_AGGREGATE_NAME + "Deleted",
+            EVENTS: "events-" + CommonConst.PRODUCT_AGGREGATE_NAME,
+            COLLECTION: CommonConst.PRODUCT_AGGREGATE_NAME,
+        },
+    }
+
+    static AGGREGATE_NAMES(): Object[] {
+        return Object.keys(this.AGGREGATES).map((key) => this.AGGREGATES[key].NAME);
+    }
+
 }

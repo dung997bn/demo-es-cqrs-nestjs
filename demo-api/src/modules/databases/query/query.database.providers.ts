@@ -13,12 +13,7 @@ export const queryDatabaseProvider = [
         useFactory: async (): Promise<typeof mongoose> => {
             (instance as any).Promise = global.Promise
             instance.set("useCreateIndex", true);
-            return await instance.connect(mongoUrl, { useNewUrlParser: true }, (err) => {
-                if (err) {
-                    console.log("Has error connect db", err);
-                    throw err;
-                }
-            })
+            return await instance.connect(mongoUrl)
         }
     }
 ]
