@@ -4,6 +4,7 @@ import { ProductDomainModule } from './modules/product.domain/product.domain.mod
 import { ProductQuerySideModule } from './modules/product.queryside/product.queryside.module';
 import { CodeGenerateModule } from './modules/code-generate/code-generate.module';
 
+
 @Module({
   imports: [ProductDomainModule, ProductQuerySideModule, ConfigsModule, CodeGenerateModule],
   controllers: [],

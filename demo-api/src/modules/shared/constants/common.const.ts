@@ -1,7 +1,7 @@
 export class CommonConst {
     static DOMAIN_CONNECTION_TOKEN = "Domain-DbConnectionToken";
     static QUERY_CONNECTION_TOKEN = "Query-DbConnectionToken";
-    
+
     static DOMAIN_MODEL_TOKEN = "Domain-ModelToken";
     static QUERY_MODEL_TOKEN = "Query-ModelToken";
 
@@ -32,4 +32,15 @@ export class CommonConst {
         return Object.keys(this.AGGREGATES).map((key) => this.AGGREGATES[key].NAME);
     }
 
+
+
+
+    //Microservice
+    static PRODUCT_AMPQ_SERVICE = "product_ampq";
+    static PRODUCT_AMPQ_QUEUE = "product_queue";
+    static PRODUCT_AMPQ_PATTERN = "product_created_ampq";
+
+
+    static PRODUCT_REDIS_SERVICE = "product_ampq";
+    static PRODUCT_REDIS_PATTERN = "product_created_redis";
 }

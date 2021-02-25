@@ -1,21 +1,18 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { ExpressAdapter } from "@nestjs/platform-express";
-import express = require('express');
-import { ConfigsService } from './modules/configs/configs.service';
-import * as clc from 'cli-color'
 import { Transport } from '@nestjs/microservices';
-
-const http = require('http');
-
+import { ExpressAdapter } from '@nestjs/platform-express';
+import { AppModule } from './app.module';
+import { ConfigsService } from './configs/configs.service';
+import { CommonConst } from './shared/constant';
+import express = require('express');
 const configService = new ConfigsService(`env.${process.env.NODE_ENV}`)
 const port = configService.get("PORT");
 const redisUrl = configService.get('REDIS_URL');
+const http = require('http');
 
 async function bootstrap() {
   const server = express();
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
-  app.setGlobalPrefix('/api')
   app.connectMicroservice(
     {
       transport: Transport.REDIS,
@@ -26,6 +23,6 @@ async function bootstrap() {
   )
   await app.startAllMicroservicesAsync()
   await app.init()
-  http.createServer(server).listen(port, () => console.log(clc.cyanBright('Application is listening on port: ', port)));
+  http.createServer(server).listen(port, () => console.log('Application is listening on port: ', port))
 }
 bootstrap();

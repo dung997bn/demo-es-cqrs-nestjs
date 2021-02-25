@@ -5,6 +5,7 @@ import { IResult } from "./../../../shared/interfaces/result.interface"
 import { CreateProductCommand } from "../implements/create-product.cmd"
 import { ProductDomainAggregateModel } from '../../models/product.domain-aggregate.model'
 import * as clc from 'cli-color'
+import { Client, ClientProxy, Transport } from '@nestjs/microservices'
 
 @CommandHandler(CreateProductCommand)
 export class CreateProductCommandHandler implements ICommandHandler<CreateProductCommand> {
@@ -15,6 +16,10 @@ export class CreateProductCommandHandler implements ICommandHandler<CreateProduc
         err: null,
         data: null,
     }
+
+    @Client({ transport: Transport.REDIS })
+    client: ClientProxy;
+
     constructor(
         private readonly publisher: EventPublisher
     ) { }
@@ -42,6 +47,10 @@ export class CreateProductCommandHandler implements ICommandHandler<CreateProduc
         //pulisher
         const cmdPublisher = this.publisher.mergeObjectContext(aggregateModel)
         const msg = `${this.aggregateName}`
+
+        //Send to another sevice using Redis Queue
+        this.client.send<any>(CommonConst.PRODUCT_REDIS_PATTERN, commandModel).subscribe()
+
         cmdPublisher.addProduct(msg, commandModel)
         cmdPublisher.commit()
     }

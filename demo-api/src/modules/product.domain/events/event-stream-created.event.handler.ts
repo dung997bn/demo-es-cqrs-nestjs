@@ -6,7 +6,7 @@ import * as clc from 'cli-color';
 @EventsHandler(ProductCreatedEvent)
 export class ProductCreatedEventHandler implements IEventHandler<ProductCreatedEvent> {
     constructor(
-        private readonly repository: ProductEventRepository,
+        private readonly repository: ProductEventRepository
     ) { }
 
     async handle(event: ProductCreatedEvent) {
