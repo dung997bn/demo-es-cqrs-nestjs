@@ -1,7 +1,7 @@
 import { IEvent } from "@nestjs/cqrs";
-import { BaseEventHandler } from "src/modules/shared/eventStream/events/base-event-handler.model";
-import { BaseEventStream } from "src/modules/shared/eventStream/models/base-event-stream.model";
-import { CommandModel } from "src/modules/shared/eventStream/models/command.model";
+import { BaseEventHandler } from "../../shared/eventStream/events/base-event-handler.model";
+import { BaseEventStream } from "../../shared/eventStream/models/base-event-stream.model";
+import { CommandModel } from "../../shared/eventStream/models/command.model";
 
 export class ProductCreatedEvent extends BaseEventHandler implements IEvent {
     constructor(

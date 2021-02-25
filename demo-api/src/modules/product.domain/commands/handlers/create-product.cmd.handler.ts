@@ -1,7 +1,7 @@
 import { CommonConst } from './../../../shared/constants'
 import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs"
-import { BaseEventStream } from "src/modules/shared/eventStream/models/base-event-stream.model"
-import { IResult } from "src/modules/shared/interfaces/result.interface"
+import { BaseEventStream } from "./../../../shared/eventStream/models/base-event-stream.model"
+import { IResult } from "./../../../shared/interfaces/result.interface"
 import { CreateProductCommand } from "../implements/create-product.cmd"
 import { ProductDomainAggregateModel } from '../../models/product.domain-aggregate.model'
 import * as clc from 'cli-color'
@@ -20,7 +20,7 @@ export class CreateProductCommandHandler implements ICommandHandler<CreateProduc
     ) { }
 
     async execute(command: CreateProductCommand) {
-        console.log(clc.redBright('Create Product Command...'))
+        console.log(clc.blueBright('Inside Creating Product Domain Command...'))
         const { messagePattern, id, commandModel } = command
         const eventStream = new BaseEventStream()
         eventStream.id = id

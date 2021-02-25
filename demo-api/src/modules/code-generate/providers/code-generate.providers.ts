@@ -1,5 +1,5 @@
 import { Connection } from "mongoose";
-import { CommonConst } from "src/modules/shared/constants";
+import { CommonConst } from "../../shared/constants";
 import { CodegenerateSchema } from "../schemas/code-generate.schema";
 
 export const CodeGenerateProvider = [

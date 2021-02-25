@@ -10,7 +10,7 @@ export class ProductCreatedEventHandler implements IEventHandler<ProductCreatedE
     ) { }
 
     async handle(event: ProductCreatedEvent) {
-        console.log(clc.greenBright('Create Product Event...'));
+        console.log(clc.blueBright('Inside Creating Product Event...'));
         return this.repository.createEvent(event).then((response) => response).catch((error) => error)
     }
 }

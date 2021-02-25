@@ -1,19 +1,18 @@
-import { DeleteProductCommand } from './../commands/implements/delete-product.cmd';
-import { CreateProductQueryCommand } from './../../product.queryside/commands/implements/create-product.query.cmd';
+import { UpdateProductQueryCommand, CreateProductQueryCommand, DeleteProductQueryCommand } from './../../product.queryside/commands/implements';
 import { ProductCreatedEvent } from './../events/event-stream-created.event';
 import { ICommand, ofType, Saga } from '@nestjs/cqrs'
 import * as clc from 'cli-color'
 import { Observable } from 'rxjs'
 import { map } from "rxjs/operators";
-import { CommonConst } from 'src/modules/shared/constants';
-import { UpdateProductQueryCommand } from 'src/modules/product.queryside/commands/implements';
+import { CommonConst } from '../../shared/constants';
+
 export class ProductDomainSagas {
     @Saga()
     querySide = (events$: Observable<any>): Observable<ICommand> => {
         return events$.pipe(
             ofType(ProductCreatedEvent),
             map((event: any) => {
-                console.log(clc.redBright("Inside [Product Sagas] Saga"))
+                console.log(clc.redBright("Inside Product Sagas Saga"))
                 const baseEventStream = event.baseEventStream;
 
                 let cmd: ICommand;
@@ -33,7 +32,7 @@ export class ProductDomainSagas {
                         );
                         break;
                     case CommonConst.AGGREGATES.PRODUCT.DELETED:
-                        cmd = new DeleteProductCommand(
+                        cmd = new DeleteProductQueryCommand(
                             baseEventStream.messagePattern,
                             baseEventStream.streamId,
                             baseEventStream.payload

@@ -1,9 +1,10 @@
 import { Inject } from "@nestjs/common";
 import { Model } from "mongoose";
-import { CommonConst } from "src/modules/shared/constants";
-import { IEventStreamDocument } from "src/modules/shared/eventStream/interfaces/event-stream-document.interface";
-import { BaseEventStream } from "src/modules/shared/eventStream/models/base-event-stream.model";
+import { CommonConst } from "../../shared/constants";
+import { IEventStreamDocument } from "../../shared/eventStream/interfaces/event-stream-document.interface";
+import { BaseEventStream } from "../../shared/eventStream/models/base-event-stream.model";
 import { ProductCreatedEvent } from "../events/event-stream-created.event";
+import * as clc from 'cli-color';
 
 export class ProductEventRepository {
     constructor(
@@ -12,6 +13,7 @@ export class ProductEventRepository {
     ) { }
 
     async createEvent(eventModel: ProductCreatedEvent): Promise<any> {
+        console.log(clc.blueBright('Inside Creating Product Repository...'));
         const baseEventStream = eventModel.baseEventStream;
         const payload = eventModel.commandModel;
         const msg = eventModel.msg;

@@ -23,6 +23,7 @@ import { ProductQueryEventHandlers } from './events';
     ...ProductQueryCommandHandlers,
     ...ProductQueryEventHandlers
 
-  ]
+  ],
+  exports:[ProductQueryRepository]
 })
 export class ProductQuerySideModule { }

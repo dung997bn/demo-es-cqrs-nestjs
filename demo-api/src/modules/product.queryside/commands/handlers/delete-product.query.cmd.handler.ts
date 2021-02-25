@@ -1,5 +1,5 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
-import { CommonConst } from "src/modules/shared/constants";
+import { CommonConst } from "../../../shared/constants";
 import { ProductQueryRepository } from "../../repositories/product.query.repository";
 import { DeleteProductQueryCommand } from "../implements";
 import * as clc from 'cli-color'

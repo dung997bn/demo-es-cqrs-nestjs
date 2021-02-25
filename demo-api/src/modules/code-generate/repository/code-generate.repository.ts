@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { Model } from "mongoose";
-import { CommonConst } from "src/modules/shared/constants";
+import { CommonConst } from "../../shared/constants";
 import { ICodeGenerateDocument } from "../interfaces/document.interface";
 
 @Injectable()

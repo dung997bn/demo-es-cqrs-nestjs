@@ -1,5 +1,5 @@
 import { Connection } from "mongoose";
-import { CommonConst } from "src/modules/shared/constants";
+import { CommonConst } from "../../shared/constants";
 import { CqrsQuerySchema } from "../schemas/cqrs.query.schema";
 
 export const CqrsQueryProviders = [

@@ -3,6 +3,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { CodeGenerateModule } from '../code-generate/code-generate.module';
 import { ConfigsModule } from '../configs/configs.module';
 import { DomainDatabaseModule } from '../databases/domain/domain.database.module';
+import { ProductQuerySideModule } from '../product.queryside/product.queryside.module';
 import { ProductDomainCommandHandlers } from './commands/handlers';
 import { ProductDomainEventHandlers } from './events';
 import { ProductDomainController } from './product.domain.controller';
@@ -16,7 +17,8 @@ import { ProductDomainSagas } from './sagas/product.domain.sagas';
     CqrsModule,
     DomainDatabaseModule,
     ConfigsModule,
-    CodeGenerateModule
+    CodeGenerateModule,
+    ProductQuerySideModule
   ],
   providers: [
     ProductDomainSagas,

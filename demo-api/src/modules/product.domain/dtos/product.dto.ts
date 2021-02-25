@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from "class-validator";
-import { ClassBased } from "src/modules/shared/classes/class-based";
-import { IProduct } from "src/modules/shared/interfaces/product/product.interface";
+import { ClassBased } from "../../shared/classes/class-based";
+import { IProduct } from "../../shared/interfaces/product/product.interface";
 
 export class ProductDto extends ClassBased implements IProduct {
     id: string;
